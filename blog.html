@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Articles | Yug Samachar</title>
+  <meta name="description"
+    content="Browse all our articles on technology, AI, digital marketing, business, and lifestyle.">
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .page-header {
+      padding: 60px 0;
+      text-align: center;
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-desc {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .category-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 50px;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 24px 16px 48px;
+      border-radius: 50px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+
+    .search-input:focus {
+      border-color: var(--primary-color);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header / Navigation (Same as index.html) -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="ri-quill-pen-line"></i>
+        Yug<span>Samachar</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div id="auth-container"></div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Menu">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title">All Articles</h1>
+        <p class="page-desc">Explore our entire collection of insightful articles spanning technology, business,
+          lifestyle, and more.</p>
+      </div>
+    </div>
+
+    <!-- Ad Placement -->
+    <div class="ad-container">
+      Google AdSense Placeholder (728x90)
+    </div>
+
+    <section class="section pt-0">
+      <div class="container">
+
+        <div class="search-box">
+          <i class="ri-search-line search-icon"></i>
+          <input type="text" id="post-search" class="search-input"
+            placeholder="Search articles by title, author, or keyword...">
+        </div>
+
+        <div class="category-filters" id="category-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="technology">Technology</button>
+          <button class="filter-btn" data-filter="ai">AI</button>
+          <button class="filter-btn" data-filter="business">Business</button>
+          <button class="filter-btn" data-filter="digital marketing">Digital Marketing</button>
+          <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+        </div>
+
+        <!-- Post Grid injected via JS -->
+        <div id="all-posts-grid" class="blog-grid"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Same as index.html) -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          <i class="ri-quill-pen-line"></i>
+          Yug<span>Samachar</span>
+        </a>
+        <p class="footer-desc">A premium platform for thinkers, creators, and innovators. We weave stories that matter
+          in the digital age.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="social-link" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Categories</h3>
+        <div class="footer-links">
+          <a href="blog.html?category=technology">Technology</a>
+          <a href="blog.html?category=ai">AI & Machine Learning</a>
+          <a href="blog.html?category=business">Business</a>
+          <a href="blog.html?category=lifestyle">Lifestyle</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Legal</h3>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Ad Disclaimer</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2024 Yug Samachar Blog. All Rights Reserved.
+    </div>
+  </footer>
+
+  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+  <script src="./js/main.js"></script>
+  <script>
+    // Blog Specific JS (Search and Filter)
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('post-search');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+
+      // Delay search execution
+      let searchTimeout;
+
+      const filterPosts = () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        const allCards = document.querySelectorAll('.blog-card');
+
+        allCards.forEach(card => {
+          const category = card.dataset.category;
+          const title = card.querySelector('.card-title').textContent.toLowerCase();
+          const excerpt = card.querySelector('.card-excerpt').textContent.toLowerCase();
+          const author = card.querySelector('.author-name').textContent.toLowerCase();
+
+          const matchCategory = activeFilter === 'all' || category === activeFilter;
+          const matchSearch = title.includes(searchTerm) || excerpt.includes(searchTerm) || author.includes(searchTerm);
+
+          if (matchCategory && matchSearch) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      };
+
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(filterPosts, 300);
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          filterPosts();
+        });
+      });
+
+      // Check for URL parameters to set initial filter (e.g. ?category=ai)
+      setTimeout(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        if (categoryParam) {
+          const btn = document.querySelector(`.filter-btn[data-filter="${categoryParam.toLowerCase()}"]`);
+          if (btn) {
+            btn.click();
+          }
+        }
+      }, 1000); // 1s delay to wait for JSON fetch and DOM render
+    });
+  </script>
+</body>
+
+</html>

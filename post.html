@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article | Yug Samachar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* Reading Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 1001;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--primary-color);
+      width: 0%;
+      transition: width 0.1s;
+    }
+
+    /* Post Layout */
+    .single-post-wrapper {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .post-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .post-category {
+      display: inline-block;
+      padding: 6px 16px;
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--primary-color);
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .post-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .post-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .post-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .post-meta-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .post-hero-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: var(--border-radius-lg);
+      margin-bottom: 40px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .post-content {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-size: 2rem;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content ul,
+    .post-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+
+    /* Social Share & Author */
+    .post-footer {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .social-share {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .social-share span {
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .author-bio {
+      display: flex;
+      gap: 24px;
+      background-color: var(--bg-secondary);
+      padding: 32px;
+      border-radius: var(--border-radius-md);
+      margin-bottom: 60px;
+    }
+
+    .author-bio img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-bio-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .author-bio-content p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Comments */
+    .comments-section {
+      margin-top: 60px;
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .comment-input {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--border-radius-sm);
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      resize: vertical;
+    }
+
+    .comment-input:focus {
+      border-color: var(--primary-color);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>
+
+  <div id="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="ri-quill-pen-line"></i>
+        Yug<span>Samachar</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div id="auth-container"></div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Menu">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article class="single-post-wrapper" id="single-post-wrapper" style="display: none;">
+      <div class="post-header">
+        <span class="post-category" id="post-category">Category</span>
+        <h1 class="post-title" id="post-title">Loading Title...</h1>
+        <div class="post-meta-top">
+          <div class="post-meta-item">
+            <img src="" alt="Author" id="post-author-img">
+            <span id="post-author-name">Author Name</span>
+          </div>
+          <div class="post-meta-item">
+            <i class="ri-calendar-line"></i>
+            <span id="post-date">Date</span>
+          </div>
+          <div class="post-meta-item">
+            <i class="ri-time-line"></i>
+            <span id="post-read-time">Read Time</span>
+          </div>
+        </div>
+      </div>
+
+      <img src="" alt="Hero Image" class="post-hero-image" id="post-hero-image">
+
+      <div class="post-content" id="post-content-body">
+        Loading content...
+      </div>
+
+      <div class="post-footer">
+        <div class="social-share">
+          <span>Share this article:</span>
+          <a href="#" class="social-link"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="social-link"><i class="ri-facebook-fill"></i></a>
+          <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
+          <a href="#" class="social-link"><i class="ri-link"></i></a>
+        </div>
+
+        <div class="author-bio">
+          <img src="" alt="Author" id="bio-author-img">
+          <div class="author-bio-content">
+            <h3 id="bio-author-name">Author Name</h3>
+            <p>Senior writer and technology enthusiast. Passionate about AI, web development, and the future of digital
+              products. Follow along for weekly insights.</p>
+          </div>
+        </div>
+
+        <!-- Ad Placement -->
+        <div class="ad-container" style="margin-bottom: 60px;">
+          Google AdSense Placeholder (728x90) or Native Ads
+        </div>
+
+        <div class="comments-section">
+          <h3 class="section-title" style="font-size: 1.75rem; text-align: left; margin-bottom: 2rem;">Leave a Comment
+          </h3>
+          <form class="comment-form" onsubmit="event.preventDefault(); alert('Comment submitted for review!');">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <input type="text" class="comment-input" placeholder="Your Name" required>
+              <input type="email" class="comment-input" placeholder="Your Email" required>
+            </div>
+            <textarea class="comment-input" rows="5" placeholder="Write your thoughts..." required></textarea>
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Post Comment</button>
+          </form>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="section" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <h2 class="section-title">Related Articles</h2>
+        <div id="related-posts-grid" class="blog-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          <i class="ri-quill-pen-line"></i>
+          Yug<span>Samachar</span>
+        </a>
+        <p class="footer-desc">A premium platform for thinkers, creators, and innovators. We weave stories that matter
+          in the digital age.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="social-link" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2024 Yug Samachar Blog. All Rights Reserved.
+    </div>
+  </footer>
+
+  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+  <script src="./js/main.js"></script>
+  <script>
+    // Reading Progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById("myBar");
+      if (bar) bar.style.width = scrolled + "%";
+    });
+
+    // Fetch and populate single post
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let postId = parseInt(urlParams.get('id'));
+
+      // Default to post 1 if no ID provided for demo purposes
+      if (!postId) postId = 1;
+
+      const posts = await fetchPosts();
+      const currentPost = posts.find(p => p.id === postId);
+
+      if (currentPost) {
+        document.title = `${currentPost.title} | Yug Samachar`;
+        document.getElementById('post-category').textContent = currentPost.category;
+        document.getElementById('post-title').textContent = currentPost.title;
+        document.getElementById('post-author-img').src = currentPost.authorImage;
+        document.getElementById('post-author-name').textContent = currentPost.author;
+        document.getElementById('post-date').textContent = currentPost.date;
+        document.getElementById('post-read-time').textContent = currentPost.readTime;
+        document.getElementById('post-hero-image').src = currentPost.image;
+        document.getElementById('post-content-body').innerHTML = currentPost.content;
+
+        document.getElementById('bio-author-img').src = currentPost.authorImage;
+        document.getElementById('bio-author-name').textContent = currentPost.author;
+
+        document.getElementById('single-post-wrapper').style.display = 'block';
+
+        // Related posts logic
+        const relatedGrid = document.getElementById('related-posts-grid');
+        const relatedPosts = posts.filter(p => p.id !== postId && p.category === currentPost.category).slice(0, 3);
+
+        // If not enough related by category, just show random
+        if (relatedPosts.length < 3) {
+          const more = posts.filter(p => p.id !== postId && p.category !== currentPost.category).slice(0, 3 - relatedPosts.length);
+          relatedPosts.push(...more);
+        }
+
+        relatedGrid.innerHTML = relatedPosts.map(p => createBlogCard(p)).join('');
+      } else {
+        document.getElementById('single-post-wrapper').innerHTML = `
+          <div style="text-align: center; padding: 100px 0;">
+            <h2>Post Not Found</h2>
+            <p>The article you are looking for does not exist.</p>
+            <a href="blog.html" class="btn btn-primary" style="margin-top: 20px;">Back to Blog</a>
+          </div>
+        `;
+        document.getElementById('single-post-wrapper').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+
+</html>

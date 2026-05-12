@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Yug Samachar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .about-hero {
+      padding: 100px 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-color) 100%);
+    }
+
+    .about-title {
+      font-size: 3.5rem;
+      margin-bottom: 24px;
+    }
+
+    .about-title span {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .about-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .about-image {
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--card-shadow-hover);
+      position: relative;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--primary-color);
+      border-radius: var(--border-radius-lg);
+      transform: translate(16px, 16px);
+      z-index: -1;
+    }
+
+    .about-content h2 {
+      font-size: 2.25rem;
+      margin-bottom: 24px;
+    }
+
+    .about-content p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-item h4 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .stat-item p {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="ri-quill-pen-line"></i>
+        Yug<span>Samachar</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div id="auth-container"></div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Menu">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <h1 class="about-title">We craft stories for the <span>Curious Mind</span></h1>
+        <p class="about-subtitle">Yug Samachar is an independent publication launched in 2023. Our mission is to decode
+          the intersection of technology, business, and human experience.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
+            alt="Our Team">
+        </div>
+
+        <div class="about-content">
+          <h2>Who We Are</h2>
+          <p>Founded by Mukund Thakur, Yug Samachar started as a small personal journal highlighting industry trends.
+            Today, it has grown into a collaborative platform featuring voices from top industry experts, software
+            engineers, and digital strategists.</p>
+          <p>We pride ourselves on ad-free (mostly), tracker-free, high-signal content. We don't write for algorithms;
+            we write for humans.</p>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h4>150+</h4>
+              <p>Articles Published</p>
+            </div>
+            <div class="stat-item">
+              <h4>50K</h4>
+              <p>Monthly Readers</p>
+            </div>
+            <div class="stat-item">
+              <h4>12</h4>
+              <p>Expert Contributors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background-color: var(--bg-secondary);">
+      <div class="container" style="text-align: center; max-width: 800px;">
+        <h2>Ready to join our community?</h2>
+        <p style="color: var(--text-secondary); font-size: 1.125rem; margin-bottom: 32px;">Subscribe to our newsletter
+          and get the best insights delivered to you weekly. No spam, ever.</p>
+        <a href="index.html#newsletter" class="btn btn-primary"
+          style="padding: 16px 40px; font-size: 1.125rem;">Subscribe Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          <i class="ri-quill-pen-line"></i>
+          Yug<span>Samachar</span>
+        </a>
+        <p class="footer-desc">A premium platform for thinkers, creators, and innovators. We weave stories that matter
+          in the digital age.</p>
+      </div>
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Yug Samachar Blog. All Rights Reserved.
+    </div>
+  </footer>
+
+  <button id="scroll-top" class="scroll-top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yug Samachar | Modern Tech & Lifestyle Blog</title>
+  <meta name="description"
+    content="Discover the latest trends in technology, AI, digital marketing, and lifestyle. High-quality articles for modern professionals.">
+
+  <!-- SEO Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Yug Samachar",
+    "url": "https://Yug Samachar.example.com",
+    "description": "Discover the latest trends in technology, AI, digital marketing, and lifestyle."
+  }
+  </script>
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <!-- Loading Animation -->
+  <div id="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="ri-quill-pen-line"></i>
+        Yug<span>Samachar</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div id="auth-container"></div>
+        <button class="search-btn" aria-label="Search">
+          <i class="ri-search-line"></i>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Menu">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Welcome to YugSamachar</span>
+          <h1 class="hero-title">Ideas that <span>Inspire</span> Your Future.</h1>
+          <p class="hero-subtitle">Dive into thought-provoking articles about technology, artificial intelligence,
+            business, and modern lifestyle. Join our community of forward-thinkers.</p>
+          <div class="hero-actions">
+            <a href="blog.html" class="btn btn-primary">Read Articles</a>
+            <a href="#newsletter" class="btn btn-outline">Subscribe</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200"
+              alt="Tech Workplace">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ad Placement -->
+    <div class="ad-container">
+      Google AdSense Placeholder (728x90)
+    </div>
+
+    <!-- Featured Posts -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Editor's Picks</h2>
+        <!-- Post Grid injected via JS -->
+        <div id="featured-grid" class="blog-grid"></div>
+      </div>
+    </section>
+
+    <!-- Ad Placement -->
+    <div class="ad-container" style="max-width: 300px; min-height: 250px;">
+      Square Ad (300x250)
+    </div>
+
+    <!-- Latest Articles -->
+    <section class="section" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+        <!-- Post Grid injected via JS -->
+        <div id="latest-grid" class="blog-grid"></div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="blog.html" class="btn btn-primary">View All Posts</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section" id="newsletter">
+      <div class="container">
+        <div class="newsletter">
+          <div class="newsletter-content">
+            <h2 class="newsletter-title">Subscribe to Our Newsletter</h2>
+            <p class="newsletter-subtitle">Get the latest articles, exclusive resources, and community updates delivered
+              straight to your inbox.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+              <input type="email" class="newsletter-input" placeholder="Your email address" required>
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe Free</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          <i class="ri-quill-pen-line"></i>
+          Yug<span>Samachar</span>
+        </a>
+        <p class="footer-desc">A premium platform for thinkers, creators, and innovators. We weave stories that matter
+          in the digital age.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="social-link" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Categories</h3>
+        <div class="footer-links">
+          <a href="blog.html?category=technology">Technology</a>
+          <a href="blog.html?category=ai">AI & Machine Learning</a>
+          <a href="blog.html?category=business">Business</a>
+          <a href="blog.html?category=lifestyle">Lifestyle</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Legal</h3>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Ad Disclaimer</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2024 Yug Samachar Blog. All Rights Reserved. Built for excellence.
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
